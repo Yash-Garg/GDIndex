@@ -1,31 +1,36 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-      - master
+    push:
+        branches:
+            - master
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - uses: actions/checkout@v2
-      - name: Publish
-        env:
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          TITLE: ${{ secrets.TITLE }}
-          DEFAULT_ROOT_ID: ${{ secrets.DEFAULT_ROOT_ID }}
-          FOLDER_TITLE: ${{ secrets.FOLDER_TITLE }}
-          USE_SERVICE_ACCOUNT: ${{ secrets.USE_SERVICE_ACCOUNT }}
-        uses: cloudflare/wrangler-action@1.3.0
-        with:
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          preCommands: |
-             wrangler kv:key put SERVICE_ACCOUNT_JSON '${{ secrets.SERVICE_ACCOUNT_JSON }}' --binding sa
-          secrets: |
-              TITLE
-              DEFAULT_ROOT_ID
-              USE_SERVICE_ACCOUNT
-              FOLDER_TITLE
+    deploy:
+        runs-on: ubuntu-latest
+        name: Deploy
+        steps:
+            - uses: actions/checkout@v2
+            - name: Publish
+              env:
+                  CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+                  CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+                  CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+                  TITLE: ${{ secrets.TITLE }}
+                  DEFAULT_ROOT_ID: ${{ secrets.DEFAULT_ROOT_ID }}
+                  FOLDER_TITLE: ${{ secrets.FOLDER_TITLE }}
+                  USE_SERVICE_ACCOUNT: ${{ secrets.USE_SERVICE_ACCOUNT }}
+                  AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
+                  AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
+              uses: cloudflare/wrangler-action@1.3.0
+              with:
+                apiToken: ${{ secrets.CF_API_TOKEN }}
+                preCommands: |
+                   wrangler kv:key put SERVICE_ACCOUNT_JSON '${{ secrets.SERVICE_ACCOUNT_JSON }}' --binding sa
+                   secrets: |
+                      AUTH_USERNAME
+                      AUTH_PASSWORD
+                      TITLE
+                      DEFAULT_ROOT_ID
+                      USE_SERVICE_ACCOUNT
+                      FOLDER_TITLE
