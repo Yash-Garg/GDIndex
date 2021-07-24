@@ -16,9 +16,9 @@ jobs:
                   CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
                   CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
                   CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
-				  CLIENT_ID: ${{ secrets.CLIENT_ID }}
-				  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-				  REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+                  CLIENT_ID: ${{ secrets.CLIENT_ID }}
+                  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+                  REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
                   TITLE: ${{ secrets.TITLE }}
                   DEFAULT_ROOT_ID: ${{ secrets.DEFAULT_ROOT_ID }}
                   FOLDER_TITLE: ${{ secrets.FOLDER_TITLE }}
