@@ -1,5 +1,5 @@
 import xf from './xfetch'
-import { getTokenFromGCPServiceAccount } from '@sagi.io/workers-jwt'
+import {getTokenFromGCPServiceAccount} from '@sagi.io/workers-jwt'
 
 class GoogleDrive {
 	constructor(properties) {
@@ -125,7 +125,7 @@ class GoogleDrive {
 			files.push(...resp.files)
 			pageToken = resp.nextPageToken
 		} while (pageToken)
-		return { files }
+		return {files}
 	}
 	async listFolderByPath(path, rootId = 'root') {
 		const id = await this.getId(path, rootId)
@@ -156,7 +156,7 @@ class GoogleDrive {
 				}
 			})
 			.json()
-			.catch(e => ({ files: [] })) // if error, make it empty
+			.catch(e => ({files: []})) // if error, make it empty
 		if (resp.files.length === 0) {
 			return null
 		}

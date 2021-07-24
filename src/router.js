@@ -66,7 +66,7 @@ class Router {
 	}
 }
 for (const verb of ['get', 'post', 'delete', 'put', 'options', 'head']) {
-	Router.prototype[verb] = function(path, handler) {
+	Router.prototype[verb] = function (path, handler) {
 		if (handler) this.useRouteWithVerb(verb, path, handler)
 		else this.useWithVerb(verb, path) // when there is only 1 argument, path is handler
 		return this

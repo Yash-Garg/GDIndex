@@ -11,14 +11,14 @@ const xf = (() => {
 			this.response = res
 		}
 	}
-	class XResponsePromise extends Promise {}
+	class XResponsePromise extends Promise { }
 	for (const alias of ['arrayBuffer', 'blob', 'formData', 'json', 'text']) {
 		// alias for .json() .text() etc...
-		XResponsePromise.prototype[alias] = function(fn) {
+		XResponsePromise.prototype[alias] = function (fn) {
 			return this.then(res => res[alias]()).then(fn || (x => x))
 		}
 	}
-	const { assign } = Object
+	const {assign} = Object
 	function mergeDeep(target, source) {
 		const isObject = obj => obj && typeof obj === 'object'
 
@@ -103,14 +103,14 @@ const xf = (() => {
 	const isBrowser = typeof self !== 'undefined' // works in both window & worker scope
 	return isBrowser
 		? extend({
-				fetch: fetch.bind(self),
-				URL,
-				Response,
-				URLSearchParams,
-				Headers,
-				FormData,
-				baseURI: isWindow ? document.baseURI : '' // since there is no document in webworkers
-		  })
+			fetch: fetch.bind(self),
+			URL,
+			Response,
+			URLSearchParams,
+			Headers,
+			FormData,
+			baseURI: isWindow ? document.baseURI : '' // since there is no document in webworkers
+		})
 		: extend()
 })()
 export default xf
