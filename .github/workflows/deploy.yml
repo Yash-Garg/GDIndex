@@ -23,14 +23,19 @@ jobs:
                   DEFAULT_ROOT_ID: ${{ secrets.DEFAULT_ROOT_ID }}
                   FOLDER_TITLE: ${{ secrets.FOLDER_TITLE }}
                   USE_SERVICE_ACCOUNT: ${{ secrets.USE_SERVICE_ACCOUNT }}
+                  USE_AUTH: ${{ secrets.USE_AUTH }}
                   AUTH_USERNAME: ${{ secrets.AUTH_USERNAME }}
                   AUTH_PASSWORD: ${{ secrets.AUTH_PASSWORD }}
               uses: cloudflare/wrangler-action@1.3.0
               with:
                   apiToken: ${{ secrets.CF_API_TOKEN }}
                   secrets: |
+                      USE_AUTH
                       AUTH_USERNAME
                       AUTH_PASSWORD
+                      CLIENT_ID
+                      CLIENT_SECRET
+                      REFRESH_TOKEN
                       TITLE
                       DEFAULT_ROOT_ID
                       USE_SERVICE_ACCOUNT
