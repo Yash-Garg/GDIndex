@@ -38,6 +38,7 @@ h1#title {
 	word-break: break-all;
 	font-size: 1.5rem;
 	margin-top: 8px;
+	padding: 10px 10px 10px 0px;
 }
 
 A:any-link {
