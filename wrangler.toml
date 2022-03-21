@@ -3,5 +3,5 @@ name = "drive"
 workers_dev = true
 webpack_config = "webpack.config.js"
 kv_namespaces = [
-    { binding = "sa", id = "86f22aa497e348f4b8368c96534aedd4" }
+    { binding = "sa", id = "4c28e1bb91104303a4f3de9419149888" }
 ]
