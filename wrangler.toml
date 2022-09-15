@@ -1,5 +1,5 @@
 type = "webpack"
-name = "drive"
+name = "td"
 workers_dev = true
 webpack_config = "webpack.config.js"
 kv_namespaces = [
